@@ -48,10 +48,32 @@ function toggleSkills(){
     this.parentElement.classList.add('skills__opened')   
 }}
 
-skillsHeader.forEach((el)=>el.addEventListener('click',toggleSkills))
+skillsHeader.forEach((item)=>item.addEventListener('click',toggleSkills))
 
 /*==================== QUALIFICATION TABS ====================*/
+const tabs = document.querySelectorAll('[data-target]'),
+    tabContents = document.querySelectorAll('[data-content]');
 
+console.log(tabs)
+console.log(tabContents)
+
+tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+        const target = document.querySelector(tab.dataset.target)
+
+        tabContents.forEach(tabContent=>{
+            tabContent.classList.remove('qualification__active')
+        })
+        target.classList.add('qualification__active')
+
+        tabs.forEach(tab=>{
+            tab.classList.remove('qualification__active')
+        })
+
+        tab.classList.add('qualification__active')
+        
+    })
+})
 
 /*==================== SERVICES MODAL ====================*/
 
